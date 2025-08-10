@@ -1,14 +1,12 @@
 /* --- Root Variables --- */
 :root {
-  --bg-color: #0d1117;
-  --primary-text: #c9d1d9;
-  --secondary-text: #8b949e;
+  --bg-color: #010409;
+  --primary-text: #e6edf3;
+  --secondary-text: #7d8590;
   --accent-color: #58a6ff;
-  --border-color: #30363d;
-  --card-bg: rgba(22, 27, 34, 0.6);
-  --glow-pink: #ec4899;
-  --glow-purple: #8b5cf6;
-  --glow-orange: #f97316;
+  --border-color: rgba(22, 27, 34, 0.8);
+  --card-bg: rgba(13, 17, 23, 0.5);
+  --spotlight-color: rgba(88, 166, 255, 0.15);
 }
 
 /* --- General & Reset --- */
@@ -27,32 +25,32 @@ body {
   background-color: var(--bg-color);
   color: var(--primary-text);
   line-height: 1.6;
-  overflow: hidden; /* Crucial for scroll-jacking */
+  overflow-x: hidden;
 }
 
-.background-glow {
+.background-grid {
   position: fixed;
-  width: 1200px;
-  height: 1200px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: conic-gradient(
-    from 0deg,
-    var(--glow-pink),
-    var(--glow-purple),
-    var(--glow-orange),
-    var(--glow-pink)
-  );
-  filter: blur(200px);
-  opacity: 0.3;
-  z-index: -1;
-  animation: rotateGlow 20s linear infinite;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 30px 30px;
+  z-index: -2;
 }
 
-@keyframes rotateGlow {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to { transform: translate(-50%, -50%) rotate(360deg); }
+#cursor-spotlight {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--spotlight-color) 0%, transparent 60%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: -1;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease-out;
 }
 
 /* --- Header & Navigation --- */
@@ -61,7 +59,7 @@ body {
   width: 100%;
   top: 0;
   z-index: 100;
-  background: rgba(13, 17, 23, 0.8);
+  background: rgba(1, 4, 9, 0.8);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-color);
 }
@@ -80,7 +78,6 @@ body {
   font-weight: 700;
   color: var(--primary-text);
   text-decoration: none;
-  cursor: pointer;
 }
 
 .nav-menu {
@@ -94,29 +91,19 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
-  cursor: pointer;
 }
 
 .nav-menu a:hover, .nav-menu a.active {
   color: var(--primary-text);
 }
 
-/* --- Page & Section Styling --- */
-#main-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory; /* This can be an alternative to JS scroll-jacking */
-}
-
-.page {
-  height: 100vh;
-  width: 100vw;
+/* --- General Section Styling --- */
+.content-section {
+  padding: 8rem 2rem;
+  min-height: 80vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 6rem 2rem;
-  scroll-snap-align: start;
+  justify-content: center;
 }
 
 .section-container {
@@ -127,25 +114,36 @@ body {
 
 .section-title {
   font-size: 2.5rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
   color: var(--primary-text);
 }
 
-/* --- Hero Section --- */
-.hero-content {
-    text-align: center;
+.section-intro {
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+  color: var(--secondary-text);
+  font-size: 1.1rem;
 }
+
+/* --- Hero Section --- */
+#hero {
+  min-height: 100vh;
+}
+
 .hero-title {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(3rem, 8vw, 5.5rem);
   font-weight: 700;
   color: var(--primary-text);
   margin-bottom: 1rem;
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 4vw, 1.5rem);
+  font-size: clamp(1.1rem, 4vw, 1.5rem);
   color: var(--secondary-text);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .hero-socials {
@@ -162,6 +160,7 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 50px;
   transition: all 0.3s ease;
+  background-color: var(--card-bg);
 }
 
 .social-link:hover {
@@ -170,27 +169,7 @@ body {
   border-color: var(--accent-color);
 }
 
-/* --- About & Skills Section --- */
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.about-text p {
-  font-size: 1.1rem;
-  color: var(--secondary-text);
-  max-width: 700px;
-  margin: 0 auto 1.5rem auto;
-}
-
-.about-skills h3 {
-  margin-bottom: 1.5rem;
-  color: var(--primary-text);
-}
-
+/* --- Skills Section --- */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
@@ -198,24 +177,20 @@ body {
   gap: 1rem;
 }
 
-.skills-grid a {
-    text-decoration: none;
-}
-
-.skills-grid span {
+.skill-card {
+  text-decoration: none;
+  color: var(--primary-text);
   background-color: var(--card-bg);
-  color: var(--secondary-text);
-  padding: 0.5rem 1rem;
+  padding: 1rem 1.5rem;
   border: 1px solid var(--border-color);
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: 600;
   transition: all 0.2s ease-in-out;
 }
 
-.skills-grid a:hover span {
-    color: var(--primary-text);
-    border-color: var(--accent-color);
-    transform: translateY(-2px);
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
 }
 
 /* --- Experience Timeline --- */
@@ -254,9 +229,9 @@ body {
 /* --- Projects Section --- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1100px;
 }
 
 .project-card {
@@ -267,17 +242,28 @@ body {
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   text-align: left;
+  text-decoration: none;
+  color: var(--primary-text);
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
+  box-shadow: 0 0 25px rgba(88, 166, 255, 0.1);
   border-color: var(--accent-color);
+}
+
+.large-card {
+    grid-column: span 2;
+}
+
+.small-card {
+    grid-column: span 1;
 }
 
 .project-image {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     border-bottom: 1px solid var(--border-color);
 }
@@ -287,33 +273,18 @@ body {
 }
 
 .card-content h3 {
-  color: var(--primary-text);
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .card-content p {
   color: var(--secondary-text);
-  margin-bottom: 1.5rem;
-}
-
-.card-content a {
-  color: var(--accent-color);
-  text-decoration: none;
-  font-weight: 600;
 }
 
 /* --- Contact & Footer --- */
-.contact-text {
-  max-width: 600px;
-  margin: 0 auto 2rem auto;
-  color: var(--secondary-text);
-  font-size: 1.1rem;
-}
-
 .contact-button {
   display: inline-block;
   color: var(--primary-text);
-  background-color: transparent;
+  background-color: var(--card-bg);
   border: 1px solid var(--border-color);
   padding: 1rem 2rem;
   border-radius: 8px;
@@ -329,14 +300,10 @@ body {
 }
 
 #footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding: 4rem 2rem 2rem;
   color: var(--secondary-text);
   font-size: 0.9rem;
-  z-index: 10;
 }
 
 /* --- Animations --- */
@@ -346,7 +313,7 @@ body {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.page.active .reveal {
+.reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -356,7 +323,10 @@ body {
   .nav-menu {
     display: none;
   }
-  .page {
-      padding: 4rem 1rem;
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+  .large-card, .small-card {
+    grid-column: span 1;
   }
 }
