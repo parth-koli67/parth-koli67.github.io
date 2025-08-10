@@ -13,7 +13,7 @@
     <!-- Header Section -->
     <header class="header">
         <nav class="navbar container">
-            <a href="#" class="nav-logo">PK</a>
+            <a href="#" class="nav-logo">Parth Koli</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
@@ -31,6 +31,12 @@
     <main>
         <!-- Hero Section -->
         <section class="hero">
+            <div class="hero-background-tech">
+                <i class="fab fa-aws"></i>
+                <i class="fab fa-docker"></i>
+                <i class="fab fa-python"></i>
+                <i class="fas fa-code"></i>
+            </div>
             <div class="hero-content container">
                 <h1 class="hero-title reveal">Hi, I'm Parth Koli</h1>
                 <h2 class="hero-subtitle reveal">Cloud & DevOps Engineer</h2>
@@ -44,8 +50,11 @@
             <div class="container">
                 <h2 class="section-title reveal">About Me</h2>
                 <div class="about-content">
-                    <div class="about-image reveal">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Parth Koli" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/400x400/112240/ccd6f6?text=Parth';">
+                    <div class="about-image-collage reveal">
+                        <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Code on a screen" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a2e/e94560?text=Tech+1';">
+                        <img src="https://images.unsplash.com/photo-1599658880122-63d6b813f2a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Server racks" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a2e/e94560?text=Tech+2';">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Cloud infrastructure diagram" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a2e/e94560?text=Tech+3';">
+                        <img src="https://images.unsplash.com/photo-1542831371-d5f7d6f58593?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Abstract network connections" onerror="this.onerror=null;this.src='https://placehold.co/300x200/1a1a2e/e94560?text=Tech+4';">
                     </div>
                     <div class="about-text">
                         <p class="reveal">I am a passionate Cloud and DevOps Engineer with a knack for automating complex workflows and building robust cloud-native solutions. My expertise lies in Infrastructure as Code (IaC), container orchestration, and CI/CD pipelines.</p>
@@ -74,7 +83,7 @@
             <div class="container">
                 <h2 class="section-title reveal">My Tech Stack</h2>
                 <div class="skills-grid">
-                    <div class="skill-card reveal">
+                     <div class="skill-card reveal">
                         <div class="skill-icon"><i class="fa-brands fa-google"></i></div>
                         <h3 class="skill-title">Google Cloud (GCP)</h3>
                         <p class="skill-description">Compute Engine, GKE, Cloud Run, Cloud Functions, VPC, Cloud Storage, IAM.</p>
@@ -114,9 +123,6 @@
                 <h2 class="section-title reveal">Featured Projects</h2>
                 <div class="projects-grid">
                     <div class="project-card reveal">
-                        <div class="project-image-wrapper">
-                           <img src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Terraform GCP Shared VPC" onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/ccd6f6?text=Project';">
-                        </div>
                         <div class="project-content">
                             <h3 class="project-title">Terraform GCP Shared VPC</h3>
                             <p class="project-description">A reusable Terraform module to set up a secure and scalable Shared VPC network on Google Cloud Platform.</p>
@@ -129,9 +135,6 @@
                         </div>
                     </div>
                     <div class="project-card reveal">
-                         <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Cloud-Native GCP Deployment" onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/ccd6f6?text=Project';">
-                        </div>
                         <div class="project-content">
                             <h3 class="project-title">Cloud-Native GCP Deployment</h3>
                             <p class="project-description">Deployed a containerized microservices application on GKE, utilizing Cloud Build for CI/CD.</p>
@@ -143,33 +146,16 @@
                             <a href="https://github.com/parth-koli67/Cloud-native-gcp-deployment" target="_blank" class="btn btn-secondary">View on GitHub</a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact-section section-padding">
-            <div class="container">
-                <div class="contact-wrapper reveal">
-                    <div class="contact-text">
-                        <h2>Have a project idea? <br>Let's work together!</h2>
-                        <p>Do you fancy saying hi to me or do you want to get started with your project and you need my help? Feel free to contact me.</p>
-                        <a href="mailto:parth.koli67@gmail.com" class="btn btn-primary">Let's Work Together <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="contact-details">
-                        <div class="contact-card">
-                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-                            <div class="contact-info">
-                                <span>Chat with me</span>
-                                <a href="mailto:parth.koli67@gmail.com">parth.koli67@gmail.com</a>
+                     <div class="project-card reveal">
+                        <div class="project-content">
+                            <h3 class="project-title">Automated Server Patching</h3>
+                            <p class="project-description">An Ansible playbook to automate the patching and rebooting of a fleet of Linux servers, reducing manual effort.</p>
+                             <div class="project-tags">
+                                <span>Ansible</span>
+                                <span>Linux</span>
+                                <span>Automation</span>
                             </div>
-                        </div>
-                        <div class="contact-card">
-                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-                            <div class="contact-info">
-                                <span>Call me</span>
-                                <p>+91 12345 67890</p> <!-- Replace with your phone number -->
-                            </div>
+                            <a href="#" target="_blank" class="btn btn-secondary">View on GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -178,19 +164,35 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-info">
-                <h4>Parth Koli</h4>
-                <p>Pune, Maharashtra, India</p>
+    <footer id="contact" class="footer">
+        <div class="container">
+             <div class="footer-title-section">
+                <h2 class="section-title reveal">Get In Touch</h2>
+                <p class="reveal">Have a project in mind or just want to connect? My inbox is always open!</p>
             </div>
-            <div class="footer-links">
+            <div class="footer-contact-details reveal">
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <span>Chat with me</span>
+                        <a href="mailto:parth.koli67@gmail.com">parth.koli67@gmail.com</a>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                    <div class="contact-info">
+                        <span>Call me</span>
+                        <p>+91 12345 67890</p> <!-- Replace with your phone number -->
+                    </div>
+                </div>
+            </div>
+            <div class="footer-social-links reveal">
                 <a href="https://github.com/parth-koli67" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="https://www.linkedin.com/in/parth-koli-1a5381172/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
          <div class="footer-bottom">
-            <p>&copy; 2025 Parth Koli. Designed with &hearts;.</p>
+            <p>&copy; 2025 Parth Koli. All rights reserved.</p>
         </div>
     </footer>
 
