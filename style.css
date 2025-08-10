@@ -17,6 +17,11 @@ body {
     padding: 80px 0;
 }
 
+.about-section {
+    padding-top: 40px;
+    padding-bottom: 80px;
+}
+
 .section-title {
     text-align: center;
     font-size: 2.5rem;
@@ -490,4 +495,3 @@ body {
         margin-bottom: 30px;
     }
 }
-
