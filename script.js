@@ -1,72 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-  // --- Dynamic Background Glow on Mouse Move ---
-  const glow = document.querySelector('.background-glow');
-  document.addEventListener('mousemove', (e) => {
-    // Using requestAnimationFrame for performance
-    window.requestAnimationFrame(() => {
-      glow.style.transform = `translate(${e.clientX - 500}px, ${e.clientY - 500}px)`;
-    });
-  });
-
-  // --- Smooth Scrolling for Navigation ---
-  document.querySelectorAll('.nav-menu a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const headerOffset = document.getElementById('header').offsetHeight;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
-
-  // --- Scroll-triggered Animations ---
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Optional: unobserve after revealing to save resources
-        // revealObserver.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
-  // --- Active Navigation Link Highlighting on Scroll ---
-  const sections = document.querySelectorAll('section[id]');
+  const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-menu a');
+  let currentPageIndex = 0;
+  let isScrolling = false;
 
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const activeId = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${activeId}`) {
-            link.classList.add('active');
-          }
-        });
-      }
+  // Function to scroll to a specific page index
+  function scrollToIndex(index) {
+    if (isScrolling || index < 0 || index >= pages.length) return;
+    isScrolling = true;
+    currentPageIndex = index;
+
+    pages[index].scrollIntoView({ behavior: 'smooth' });
+
+    // Update active classes after scrolling
+    setTimeout(() => {
+      updateActiveElements();
+      isScrolling = false;
+    }, 700); // Match this timeout to scroll behavior duration
+  }
+
+  // Function to update active navigation and page classes
+  function updateActiveElements() {
+    // Update nav links
+    navLinks.forEach(link => link.classList.remove('active'));
+    const activeLink = document.querySelector(`.nav-menu a[data-index="${currentPageIndex}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+    
+    // Update page for animations
+    pages.forEach(page => page.classList.remove('active'));
+    pages[currentPageIndex].classList.add('active');
+  }
+
+  // Handle wheel event for scroll-jacking
+  document.addEventListener('wheel', (e) => {
+    if (isScrolling) return;
+    
+    const scrollDirection = e.deltaY > 0 ? 'down' : 'up';
+    
+    if (scrollDirection === 'down') {
+      scrollToIndex(currentPageIndex + 1);
+    } else {
+      scrollToIndex(currentPageIndex - 1);
+    }
+  }, { passive: false });
+
+
+  // Handle navigation link clicks
+  navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetIndex = parseInt(e.currentTarget.getAttribute('data-index'));
+      scrollToIndex(targetIndex);
     });
-  }, {
-    rootMargin: '-30% 0px -70% 0px'
   });
+  
+  // Handle logo click to go to top
+   document.querySelector('.nav-logo').addEventListener('click', (e) => {
+      e.preventDefault();
+      scrollToIndex(0);
+   });
 
-  sections.forEach(section => {
-    sectionObserver.observe(section);
-  });
+
+  // Initial state setup
+  updateActiveElements();
 });
