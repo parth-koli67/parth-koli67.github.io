@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  
   // --- Scroll-triggered Fade-in Animations ---
   const revealElements = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries, observer) => {
