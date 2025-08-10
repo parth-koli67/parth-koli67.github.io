@@ -6,7 +6,9 @@
   --accent-color: #58a6ff;
   --border-color: #30363d;
   --card-bg: rgba(22, 27, 34, 0.6);
-  --glow-color: rgba(88, 166, 255, 0.5);
+  --glow-pink: #ec4899;
+  --glow-purple: #8b5cf6;
+  --glow-orange: #f97316;
 }
 
 /* --- General & Reset --- */
@@ -25,21 +27,32 @@ body {
   background-color: var(--bg-color);
   color: var(--primary-text);
   line-height: 1.6;
-  overflow-x: hidden;
+  overflow: hidden; /* Crucial for scroll-jacking */
 }
 
 .background-glow {
   position: fixed;
-  width: 1000px;
-  height: 1000px;
+  width: 1200px;
+  height: 1200px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, var(--glow-color) 0%, transparent 60%);
-  filter: blur(150px);
+  background: conic-gradient(
+    from 0deg,
+    var(--glow-pink),
+    var(--glow-purple),
+    var(--glow-orange),
+    var(--glow-pink)
+  );
+  filter: blur(200px);
+  opacity: 0.3;
   z-index: -1;
-  pointer-events: none;
-  transition: transform 0.2s ease-out;
+  animation: rotateGlow 20s linear infinite;
+}
+
+@keyframes rotateGlow {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* --- Header & Navigation --- */
@@ -67,6 +80,7 @@ body {
   font-weight: 700;
   color: var(--primary-text);
   text-decoration: none;
+  cursor: pointer;
 }
 
 .nav-menu {
@@ -80,23 +94,47 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
+  cursor: pointer;
 }
 
 .nav-menu a:hover, .nav-menu a.active {
   color: var(--primary-text);
 }
 
-/* --- Hero Section --- */
-.hero-section {
-  min-height: 100vh;
+/* --- Page & Section Styling --- */
+#main-container {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory; /* This can be an alternative to JS scroll-jacking */
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 0 2rem;
+  padding: 6rem 2rem;
+  scroll-snap-align: start;
 }
 
+.section-container {
+  max-width: 1100px;
+  width: 100%;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 4rem;
+  color: var(--primary-text);
+}
+
+/* --- Hero Section --- */
+.hero-content {
+    text-align: center;
+}
 .hero-title {
   font-size: clamp(2.5rem, 8vw, 5rem);
   font-weight: 700;
@@ -110,10 +148,16 @@ body {
   margin-bottom: 2rem;
 }
 
+.hero-socials {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
 .social-link {
   color: var(--secondary-text);
   text-decoration: none;
-  margin: 0 1rem;
   padding: 0.5rem 1.5rem;
   border: 1px solid var(--border-color);
   border-radius: 50px;
@@ -126,30 +170,11 @@ body {
   border-color: var(--accent-color);
 }
 
-/* --- General Section Styling --- */
-.content-section {
-  padding: 8rem 0;
-}
-
-.section-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 2rem;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 4rem;
-  color: var(--primary-text);
-}
-
 /* --- About & Skills Section --- */
 .about-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4rem;
-  text-align: center;
+  gap: 3rem;
   max-width: 800px;
   margin: 0 auto;
 }
@@ -157,6 +182,8 @@ body {
 .about-text p {
   font-size: 1.1rem;
   color: var(--secondary-text);
+  max-width: 700px;
+  margin: 0 auto 1.5rem auto;
 }
 
 .about-skills h3 {
@@ -171,6 +198,10 @@ body {
   gap: 1rem;
 }
 
+.skills-grid a {
+    text-decoration: none;
+}
+
 .skills-grid span {
   background-color: var(--card-bg);
   color: var(--secondary-text);
@@ -178,30 +209,31 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 6px;
   font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.skills-grid a:hover span {
+    color: var(--primary-text);
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
 }
 
 /* --- Experience Timeline --- */
 .timeline {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
   max-width: 800px;
   margin: 0 auto;
+  text-align: left;
 }
 
 .timeline-item {
-  padding: 2rem;
+  padding: 1.5rem;
   background: var(--card-bg);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
-}
-
-.timeline-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px var(--glow-color);
-  border-color: var(--accent-color);
 }
 
 .timeline-item h3 {
@@ -222,27 +254,36 @@ body {
 /* --- Projects Section --- */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem;
+  max-width: 1200px;
 }
 
 .project-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  text-align: left;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 25px var(--glow-color);
+  box-shadow: 0 0 25px rgba(88, 166, 255, 0.2);
   border-color: var(--accent-color);
 }
 
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
 .card-content {
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .card-content h3 {
@@ -262,10 +303,6 @@ body {
 }
 
 /* --- Contact & Footer --- */
-#contact {
-  text-align: center;
-}
-
 .contact-text {
   max-width: 600px;
   margin: 0 auto 2rem auto;
@@ -292,10 +329,14 @@ body {
 }
 
 #footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   text-align: center;
-  padding: 4rem 2rem 2rem;
+  padding: 1rem;
   color: var(--secondary-text);
   font-size: 0.9rem;
+  z-index: 10;
 }
 
 /* --- Animations --- */
@@ -305,7 +346,7 @@ body {
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.reveal.visible {
+.page.active .reveal {
   opacity: 1;
   transform: translateY(0);
 }
@@ -313,6 +354,9 @@ body {
 /* --- Responsive Design --- */
 @media (max-width: 768px) {
   .nav-menu {
-    display: none; /* For simplicity; a burger menu is a good enhancement */
+    display: none;
+  }
+  .page {
+      padding: 4rem 1rem;
   }
 }
