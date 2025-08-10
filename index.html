@@ -45,7 +45,7 @@
                 <h2 class="section-title reveal">About Me</h2>
                 <div class="about-content">
                     <div class="about-image reveal">
-                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Parth Koli" class="profile-pic">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80" alt="Parth Koli" class="profile-pic" onerror="this.onerror=null;this.src='https://placehold.co/400x400/112240/ccd6f6?text=Parth';">
                     </div>
                     <div class="about-text">
                         <p class="reveal">I am a passionate Cloud and DevOps Engineer with a knack for automating complex workflows and building robust cloud-native solutions. My expertise lies in Infrastructure as Code (IaC), container orchestration, and CI/CD pipelines.</p>
@@ -115,7 +115,7 @@
                 <div class="projects-grid">
                     <div class="project-card reveal">
                         <div class="project-image-wrapper">
-                           <img src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Project One">
+                           <img src="https://images.unsplash.com/photo-1583521214690-73421a1829a9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Terraform GCP Shared VPC" onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/ccd6f6?text=Project';">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Terraform GCP Shared VPC</h3>
@@ -130,7 +130,7 @@
                     </div>
                     <div class="project-card reveal">
                          <div class="project-image-wrapper">
-                            <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Project Two">
+                            <img src="https://images.unsplash.com/photo-1605379399642-870262d3d051?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" class="project-image" alt="Cloud-Native GCP Deployment" onerror="this.onerror=null;this.src='https://placehold.co/600x400/112240/ccd6f6?text=Project';">
                         </div>
                         <div class="project-content">
                             <h3 class="project-title">Cloud-Native GCP Deployment</h3>
@@ -150,12 +150,28 @@
         <!-- Contact Section -->
         <section id="contact" class="contact-section section-padding">
             <div class="container">
-                <h2 class="section-title reveal">Let's Build Something Amazing</h2>
-                <p class="contact-description reveal">Have a project in mind or just want to connect? Feel free to reach out. I'm always open to new opportunities and collaborations.</p>
-                <a href="mailto:parth.koli67@gmail.com" class="btn btn-primary reveal">Say Hello</a>
-                <div class="social-links reveal">
-                    <a href="https://github.com/parth-koli67" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/parth-koli-1a5381172/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <div class="contact-wrapper reveal">
+                    <div class="contact-text">
+                        <h2>Have a project idea? <br>Let's work together!</h2>
+                        <p>Do you fancy saying hi to me or do you want to get started with your project and you need my help? Feel free to contact me.</p>
+                        <a href="mailto:parth.koli67@gmail.com" class="btn btn-primary">Let's Work Together <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="contact-details">
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-info">
+                                <span>Chat with me</span>
+                                <a href="mailto:parth.koli67@gmail.com">parth.koli67@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-card">
+                            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-info">
+                                <span>Call me</span>
+                                <p>+91 12345 67890</p> <!-- Replace with your phone number -->
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -163,7 +179,17 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <h4>Parth Koli</h4>
+                <p>Pune, Maharashtra, India</p>
+            </div>
+            <div class="footer-links">
+                <a href="https://github.com/parth-koli67" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/parth-koli-1a5381172/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+         <div class="footer-bottom">
             <p>&copy; 2025 Parth Koli. Designed with &hearts;.</p>
         </div>
     </footer>
