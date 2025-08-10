@@ -1,39 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
+// Mobile Navigation Toggle
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
 
-  // --- Smooth Scrolling for Navigation ---
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+});
+
+document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}));
+
+// Smooth Scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const headerOffset = document.getElementById('header').offsetHeight;
-        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        e.preventDefault();
 
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
         });
-      }
     });
-  });
+});
 
-  
-  // --- Scroll-triggered Fade-in Animations ---
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Stop observing after it's visible
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
+// Optional: Add a subtle scroll effect to the header
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 50) {
+        header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
+    } else {
+        header.style.backgroundColor = 'rgba(15, 15, 26, 0.8)';
+    }
 });
