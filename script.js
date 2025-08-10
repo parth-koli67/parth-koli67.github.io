@@ -1,87 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const pages = document.querySelectorAll('.page');
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  let currentPageIndex = 0;
-  let isScrolling = false;
-  let scrollTimeout;
 
-  // --- Debounce function to limit scroll event frequency ---
-  function debounce(func, delay) {
-    return function(...args) {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => func.apply(this, args), delay);
-    };
-  }
-
-  // --- Function to scroll to a specific page index ---
-  function scrollToIndex(index) {
-    if (index < 0 || index >= pages.length) return;
-    isScrolling = true;
-    currentPageIndex = index;
-
-    pages[index].scrollIntoView({ behavior: 'smooth' });
-
-    // Update active classes after scrolling has had time to start
-    setTimeout(() => {
-      updateActiveElements();
-      isScrolling = false;
-    }, 700); // Match this timeout to scroll behavior duration
-  }
-
-  // --- Function to handle the debounced scroll ---
-  const handleDebouncedScroll = debounce((scrollDirection) => {
-    if (isScrolling) return;
-    if (scrollDirection === 'down') {
-      scrollToIndex(currentPageIndex + 1);
-    } else {
-      scrollToIndex(currentPageIndex - 1);
-    }
-  }, 100); // 100ms delay for debouncing
-
-  // --- Function to update active navigation and page classes ---
-  function updateActiveElements() {
-    navLinks.forEach(link => link.classList.remove('active'));
-    const activeLink = document.querySelector(`.nav-menu a[data-index="${currentPageIndex}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-    
-    pages.forEach((page, index) => {
-        if (index === currentPageIndex) {
-            page.classList.add('active');
-        } else {
-            page.classList.remove('active');
-        }
+  // --- Interactive Cursor Spotlight ---
+  const spotlight = document.getElementById('cursor-spotlight');
+  document.addEventListener('mousemove', (e) => {
+    window.requestAnimationFrame(() => {
+      spotlight.style.left = `${e.clientX}px`;
+      spotlight.style.top = `${e.clientY}px`;
     });
-  }
+  });
 
-  // --- Event Listeners ---
-  document.addEventListener('wheel', (e) => {
-    e.preventDefault(); // Prevent default scroll to avoid interference
-    const scrollDirection = e.deltaY > 0 ? 'down' : 'up';
-    handleDebouncedScroll(scrollDirection);
-  }, { passive: false });
-
-  navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+  // --- Smooth Scrolling for Navigation ---
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const targetIndex = parseInt(e.currentTarget.getAttribute('data-index'));
-      if (!isScrolling) {
-        scrollToIndex(targetIndex);
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerOffset = document.getElementById('header').offsetHeight;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
       }
     });
   });
-  
-  document.querySelector('.nav-logo').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (!isScrolling) {
-      scrollToIndex(0);
-    }
+
+  // --- Scroll-triggered Animations ---
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // Stop observing after it's visible
+      }
+    });
+  }, {
+    threshold: 0.1
   });
 
-  // --- Initial state setup ---
-  // A small delay to ensure the page is fully ready before the first animation class is added
-  setTimeout(() => {
-      updateActiveElements();
-  }, 100);
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
+  });
+
+  // --- Active Navigation Link Highlighting on Scroll ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const activeId = entry.target.getAttribute('id');
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${activeId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, {
+    rootMargin: '-40% 0px -60% 0px'
+  });
+
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
 });
