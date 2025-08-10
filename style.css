@@ -18,7 +18,7 @@ body {
 }
 
 .about-section {
-    padding-top: 40px;
+    padding-top: 20px; /* Reduced spacing */
     padding-bottom: 80px;
 }
 
@@ -89,7 +89,7 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 90vh; /* Reduced from 100vh to decrease space */
     display: flex;
     align-items: center;
     justify-content: center;
