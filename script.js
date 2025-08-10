@@ -17,55 +17,50 @@ document.addEventListener('DOMContentLoaded', () => {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         const headerOffset = document.getElementById('header').offsetHeight;
-        const elementPosition = targetElement.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
+        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        
         window.scrollTo({
-          top: offsetPosition,
+          top: elementPosition,
           behavior: 'smooth'
         });
       }
     });
   });
 
-  // --- Scroll-triggered Animations ---
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Stop observing after it's visible
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  revealElements.forEach(element => {
-    revealObserver.observe(element);
-  });
-
-  // --- Active Navigation Link Highlighting on Scroll ---
-  const sections = document.querySelectorAll('section[id]');
+  // --- Sticky Stacking Section Animation on Scroll ---
+  const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-menu a');
 
-  const sectionObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const activeId = entry.target.getAttribute('id');
-        navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${activeId}`) {
-            link.classList.add('active');
-          }
-        });
+  window.addEventListener('scroll', () => {
+    let currentActive = '';
+    pages.forEach((page, i) => {
+      const rect = page.getBoundingClientRect();
+      const scaleValue = Math.max(0.9, 1 - (rect.top / window.innerHeight) * 0.1);
+      const opacityValue = Math.max(0.5, 1 - (rect.top / window.innerHeight) * 0.5);
+
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        currentActive = page.id;
+      }
+      
+      // We apply the transform only to the sections that are "behind" the current one
+      if (rect.top < 0 && i < pages.length -1) {
+        // The hero section (index 0) should not scale
+        if (i > 0) {
+            pages[i].style.transform = `scale(${Math.min(1, scaleValue)})`;
+            pages[i].style.opacity = `${Math.min(1, opacityValue)}`;
+        }
+      } else {
+        pages[i].style.transform = 'scale(1)';
+        pages[i].style.opacity = '1';
       }
     });
-  }, {
-    rootMargin: '-40% 0px -60% 0px'
-  });
 
-  sections.forEach(section => {
-    sectionObserver.observe(section);
+    // Update active navigation link
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if(link.getAttribute('href') === `#${currentActive}`) {
+            link.classList.add('active');
+        }
+    });
   });
 });
