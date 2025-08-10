@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parth Koli | Tech Portfolio</title>
+  <title>Parth Koli | Cloud & DevOps Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Header & Navigation -->
+  <div class="background-glow"></div>
+
   <header id="header">
     <nav class="nav-container">
-      <a href="#" class="nav-logo">Parth Koli</a>
+      <a href="#" class="nav-logo">PK</a>
       <ul class="nav-menu">
-        <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -23,141 +25,108 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <div class="hero-content">
-      <h1 class="hero-title">Parth Koli</h1>
-      <p class="hero-subtitle">Cloud Engineer | DevOps | IaC & Kubernetes Specialist</p>
-      <div class="hero-socials">
-        <a href="https://github.com/parth-koli67" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/parth-koli-80332a232/" target="_blank">LinkedIn</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="content-section">
-    <div class="section-container fade-in">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-content">
-        <div class="about-text">
-          <p>
-            As a Cloud Engineer, I specialize in designing, deploying, and managing scalable cloud solutions on GCP and AWS. My expertise is in Infrastructure as Code (IaC) with Terraform, container orchestration with Kubernetes and Docker, and building robust CI/CD pipelines with GitHub Actions.
-          </p>
-          <p>
-            I have a strong focus on automation, security, and cloud innovation, with hands-on experience in optimizing performance and ensuring compliance. I enjoy tackling complex challenges and building resilient, high-availability systems.
-          </p>
-        </div>
-        <div class="about-skills">
-          <h3>Core Skills:</h3>
-          <ul>
-            <li>Cloud Platforms: GCP, AWS</li>
-            <li>Infrastructure as Code: Terraform, Ansible</li>
-            <li>CI/CD: GitHub Actions, Cloud Build</li>
-            <li>Containers: Kubernetes, Docker</li>
-            <li>Networking: VPC, Firewalls, Load Balancers</li>
-            <li>Security: IAM, Secret Manager, Cloud Armor</li>
-          </ul>
+  <main>
+    <section id="hero" class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-title">Parth Koli</h1>
+        <p class="hero-subtitle">Cloud Engineer | Building the Future of Infrastructure</p>
+        <div class="hero-socials">
+          <a href="https://github.com/parth-koli67" target="_blank" class="social-link">GitHub</a>
+          <a href="https://www.linkedin.com/in/parth-koli-80332a232/" target="_blank" class="social-link">LinkedIn</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Experience Section -->
-  <section id="experience" class="content-section bg-light">
-    <div class="section-container fade-in">
-      <h2 class="section-title">Professional Experience</h2>
-      <div class="timeline">
-        <!-- Experience 1 -->
-        <div class="timeline-item fade-in">
-          <div class="timeline-content">
+    <section id="about" class="content-section">
+      <div class="section-container reveal">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+          <div class="about-text">
+            <p>As a Cloud Engineer, I specialize in designing, deploying, and managing scalable cloud solutions on GCP and AWS. My expertise is in Infrastructure as Code (IaC) with Terraform, container orchestration with Kubernetes and Docker, and building robust CI/CD pipelines with GitHub Actions.</p>
+            <p>I have a strong focus on automation, security, and cloud innovation, with hands-on experience in optimizing performance and ensuring compliance. I enjoy tackling complex challenges and building resilient, high-availability systems.</p>
+          </div>
+          <div class="about-skills">
+            <h3>Core Technologies:</h3>
+            <div class="skills-grid">
+              <span>GCP</span>
+              <span>AWS</span>
+              <span>Terraform</span>
+              <span>Kubernetes</span>
+              <span>Docker</span>
+              <span>GitHub Actions</span>
+              <span>Ansible</span>
+              <span>CI/CD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="content-section">
+      <div class="section-container reveal">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+          <div class="timeline-item reveal">
             <h3>Cloud Engineer</h3>
-            <p class="timeline-company">Searce Inc.</p>
-            <span class="timeline-date">May 2024 - Present</span>
-            <ul>
-              <li>Designed and deployed scalable, high-availability cloud infrastructure on GCP (Compute Engine, GKE, Cloud SQL).</li>
-              <li>Automated infrastructure provisioning with Terraform, reducing manual effort and ensuring consistency.</li>
-              <li>Managed GCP networking (VPCs, subnets, firewalls, VPNs) to enhance security and connectivity.</li>
-              <li>Led Proof of Concepts on GKE integrations, load balancer optimizations, and patch compliance.</li>
-            </ul>
+            <p class="timeline-company">Searce Inc. | May 2024 - Present</p>
+            <p>Designed and deployed scalable, high-availability cloud infrastructure on GCP. Automated infrastructure provisioning with Terraform and managed complex GCP networking to enhance security and connectivity.</p>
           </div>
-        </div>
-        <!-- Experience 2 -->
-        <div class="timeline-item fade-in">
-          <div class="timeline-content">
+          <div class="timeline-item reveal">
             <h3>Junior Technical Consultant</h3>
-            <p class="timeline-company">Micrologic Networks Pvt. Ltd.</p>
-            <span class="timeline-date">Jan 2024 - May 2024</span>
-            <ul>
-              <li>Delivered cybersecurity software demos and advised on security policies to enhance client compliance.</li>
-              <li>Acted as a key liaison between clients and technical teams, ensuring project completion on schedule.</li>
-            </ul>
+            <p class="timeline-company">Micrologic Networks Pvt. Ltd. | Jan 2024 - May 2024</p>
+            <p>Delivered cybersecurity software demos and advised on security policies to enhance client compliance, acting as a key liaison between clients and technical teams.</p>
           </div>
-        </div>
-        <!-- Experience 3 -->
-        <div class="timeline-item fade-in">
-          <div class="timeline-content">
+          <div class="timeline-item reveal">
             <h3>Application/IT Support</h3>
-            <p class="timeline-company">Grasim Industries Ltd.</p>
-            <span class="timeline-date">May 2023 - Jan 2024</span>
-            <ul>
-                <li>Provided technical support for Microsoft 365, Active Directory, and VPN access.</li>
-                <li>Spearheaded an Invoice Automation System deployment, saving hundreds of man-hours per month.</li>
-            </ul>
+            <p class="timeline-company">Grasim Industries Ltd. | May 2023 - Jan 2024</p>
+            <p>Provided technical support for M365 and Active Directory. Spearheaded an Invoice Automation System deployment, saving hundreds of man-hours monthly.</p>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="content-section">
-    <div class="section-container fade-in">
-      <h2 class="section-title">My Projects</h2>
-      <div class="project-grid">
-
-        <!-- Project 1 -->
-        <div class="project-card fade-in">
-          <h3>🏗️ Terraform GCP Shared VPC Scaffold</h3>
-          <p>A production-ready scaffold for deploying a secure GCP Landing Zone with a Shared VPC architecture. Includes a comprehensive set of reusable Terraform modules.</p>
-          <a href="https://github.com/parth-koli67/terraform-gcp-shared-vpc-scaffold" class="project-link" target="_blank">View on GitHub</a>
+    <section id="projects" class="content-section">
+      <div class="section-container reveal">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="project-grid">
+          <div class="project-card reveal">
+            <div class="card-content">
+              <h3>Terraform GCP Shared VPC Scaffold</h3>
+              <p>A production-ready scaffold for deploying a secure GCP Landing Zone with a Shared VPC architecture.</p>
+              <a href="https://github.com/parth-koli67/terraform-gcp-shared-vpc-scaffold" target="_blank">View Project &rarr;</a>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="card-content">
+              <h3>Cloud-Native GCP Deployment</h3>
+              <p>A modular setup for deploying containerized applications on GKE with automated CI/CD pipelines.</p>
+              <a href="https://github.com/parth-koli67/cloud-native-gcp-deployment" target="_blank">View Project &rarr;</a>
+            </div>
+          </div>
+          <div class="project-card reveal">
+            <div class="card-content">
+              <h3>Fire Detection using IoT</h3>
+              <p>Designed a real-time IoT-based fire detection system to reduce response time and improve accuracy.</p>
+              <a href="#" target="_blank">View Details &rarr;</a>
+            </div>
+          </div>
         </div>
-
-        <!-- Project 2 -->
-        <div class="project-card fade-in">
-          <h3>🌥️ Cloud-Native GCP Deployment</h3>
-          <p>A modular setup for deploying containerized applications on GKE with automated CI/CD pipelines using GitHub Actions and OIDC authentication.</p>
-          <a href="https://github.com/parth-koli67/cloud-native-gcp-deployment" class="project-link" target="_blank">View on GitHub</a>
-        </div>
-
-        <!-- Project 3 -->
-        <div class="project-card fade-in">
-          <h3>🔥 Fire Detection using IoT</h3>
-          <p>Designed a real-time IoT-based fire detection system to reduce response time. Integrated multiple sensors to improve accuracy and reliability.</p>
-          <a href="#" class="project-link" target="_blank">View Details (Link inactive)</a>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="content-section bg-light">
-    <div class="section-container fade-in">
-      <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-text">
-        I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out!
-      </p>
-      <a href="mailto:parth.koli.0607@gmail.com" class="contact-button">Say Hello</a>
-    </div>
-  </section>
+    <section id="contact" class="content-section">
+      <div class="section-container reveal">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="contact-text">I'm always open to discussing new projects and opportunities. Feel free to reach out.</p>
+        <a href="mailto:parth.koli.0607@gmail.com" class="contact-button">parth.koli.0607@gmail.com</a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
   <footer id="footer">
-    <p>&copy; 2024 Parth Koli. All Rights Reserved.</p>
+    <p>&copy; 2024 Parth Koli. Built with passion and code.</p>
   </footer>
 
-  <!-- Link to the new JavaScript file -->
   <script src="script.js" defer></script>
 </body>
 </html>
