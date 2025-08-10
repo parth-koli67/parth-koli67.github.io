@@ -18,6 +18,7 @@
     <nav class="nav-container">
       <a href="#hero" class="nav-logo">PK</a>
       <ul class="nav-menu">
+        <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -26,86 +27,88 @@
     </nav>
   </header>
 
-  <main>
-    <section id="hero" class="content-section">
-      <div class="hero-content">
-        <h1 class="hero-title reveal">Parth Koli</h1>
-        <p class="hero-subtitle reveal">Cloud Engineer with a passion for building automated, scalable, and resilient infrastructure on the cloud.</p>
-        <div class="hero-socials reveal">
-          <a href="https://github.com/parth-koli67" target="_blank" class="social-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/parth-koli-80332a232/" target="_blank" class="social-link">LinkedIn</a>
-          <a href="mailto:parth.koli.0607@gmail.com" class="social-link">Email</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="about" class="content-section">
-      <div class="section-container reveal">
-        <h2 class="section-title">About Me</h2>
-        <p class="section-intro">I specialize in Infrastructure as Code, container orchestration, and building secure, robust CI/CD pipelines. My focus is on leveraging automation to create efficient and innovative cloud solutions.</p>
-        <div class="skills-grid">
-            <a href="https://cloud.google.com/" target="_blank" class="skill-card reveal"><span>GCP</span></a>
-            <a href="https://aws.amazon.com/" target="_blank" class="skill-card reveal"><span>AWS</span></a>
-            <a href="https://www.terraform.io/" target="_blank" class="skill-card reveal"><span>Terraform</span></a>
-            <a href="https://kubernetes.io/" target="_blank" class="skill-card reveal"><span>Kubernetes</span></a>
-            <a href="https://www.docker.com/" target="_blank" class="skill-card reveal"><span>Docker</span></a>
-            <a href="https://github.com/features/actions" target="_blank" class="skill-card reveal"><span>GitHub Actions</span></a>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience" class="content-section">
-      <div class="section-container reveal">
-        <h2 class="section-title">Experience</h2>
-        <div class="timeline">
-          <div class="timeline-item reveal">
-            <h3>Cloud Engineer</h3>
-            <p class="timeline-company">Searce Inc. | May 2024 - Present</p>
-            <p>Designing and deploying scalable GCP infrastructure. Automating provisioning with Terraform and managing complex networking to enhance security.</p>
-          </div>
-          <div class="timeline-item reveal">
-            <h3>Junior Technical Consultant</h3>
-            <p class="timeline-company">Micrologic Networks | Jan 2024 - May 2024</p>
-            <p>Delivered cybersecurity software demos and advised on security policies, acting as a key liaison between clients and technical teams.</p>
-          </div>
-          <div class="timeline-item reveal">
-            <h3>Application/IT Support</h3>
-            <p class="timeline-company">Grasim Industries Ltd. | May 2023 - Jan 2024</p>
-            <p>Provided M365 & Active Directory support. Spearheaded an Invoice Automation System deployment, saving hundreds of man-hours monthly.</p>
+  <main id="main-content">
+    <div class="scroll-container">
+      <section id="hero" class="page">
+        <div class="hero-content">
+          <h1 class="hero-title">Parth Koli</h1>
+          <p class="hero-subtitle">Cloud Engineer with a passion for building automated, scalable, and resilient infrastructure on the cloud.</p>
+          <div class="hero-socials">
+            <a href="https://github.com/parth-koli67" target="_blank" class="social-link">GitHub</a>
+            <a href="https://www.linkedin.com/in/parth-koli-80332a232/" target="_blank" class="social-link">LinkedIn</a>
+            <a href="mailto:parth.koli.0607@gmail.com" class="social-link">Email</a>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="projects" class="content-section">
-      <div class="section-container reveal">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="project-grid">
-          <a href="https://github.com/parth-koli67/terraform-gcp-shared-vpc-scaffold" target="_blank" class="project-card large-card reveal">
-            <img src="https://placehold.co/800x400/1a1e24/58a6ff?text=GCP+Landing+Zone" alt="GCP Shared VPC Scaffold Project Image" class="project-image">
-            <div class="card-content">
-              <h3>Terraform GCP Shared VPC Scaffold</h3>
-              <p>A production-ready scaffold for deploying a secure GCP Landing Zone with a Shared VPC architecture.</p>
+      <section id="about" class="page">
+        <div class="section-container">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-intro">I specialize in Infrastructure as Code, container orchestration, and building secure, robust CI/CD pipelines. My focus is on leveraging automation to create efficient and innovative cloud solutions.</p>
+          <div class="skills-grid">
+              <a href="https://cloud.google.com/" target="_blank" class="skill-card"><span>GCP</span></a>
+              <a href="https://aws.amazon.com/" target="_blank" class="skill-card"><span>AWS</span></a>
+              <a href="https://www.terraform.io/" target="_blank" class="skill-card"><span>Terraform</span></a>
+              <a href="https://kubernetes.io/" target="_blank" class="skill-card"><span>Kubernetes</span></a>
+              <a href="https://www.docker.com/" target="_blank" class="skill-card"><span>Docker</span></a>
+              <a href="https://github.com/features/actions" target="_blank" class="skill-card"><span>GitHub Actions</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" class="page">
+        <div class="section-container">
+          <h2 class="section-title">Experience</h2>
+          <div class="timeline">
+            <div class="timeline-item">
+              <h3>Cloud Engineer</h3>
+              <p class="timeline-company">Searce Inc. | May 2024 - Present</p>
+              <p>Designing and deploying scalable GCP infrastructure. Automating provisioning with Terraform and managing complex networking to enhance security.</p>
             </div>
-          </a>
-          <a href="https://github.com/parth-koli67/cloud-native-gcp-deployment" target="_blank" class="project-card small-card reveal">
-            <img src="https://placehold.co/600x400/1a1e24/c9d1d9?text=Cloud-Native+CI/CD" alt="Cloud-Native GCP Deployment Project Image" class="project-image">
-            <div class="card-content">
-              <h3>Cloud-Native GCP Deployment</h3>
-              <p>A modular setup for deploying containerized apps on GKE.</p>
+            <div class="timeline-item">
+              <h3>Junior Technical Consultant</h3>
+              <p class="timeline-company">Micrologic Networks | Jan 2024 - May 2024</p>
+              <p>Delivered cybersecurity software demos and advised on security policies, acting as a key liaison between clients and technical teams.</p>
             </div>
-          </a>
+            <div class="timeline-item">
+              <h3>Application/IT Support</h3>
+              <p class="timeline-company">Grasim Industries Ltd. | May 2023 - Jan 2024</p>
+              <p>Provided M365 & Active Directory support. Spearheaded an Invoice Automation System deployment, saving hundreds of man-hours monthly.</p>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="contact" class="content-section">
-      <div class="section-container reveal">
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="section-intro">I'm always open to discussing new projects and opportunities. Feel free to reach out.</p>
-        <a href="mailto:parth.koli.0607@gmail.com" class="contact-button">parth.koli.0607@gmail.com</a>
-      </div>
-    </section>
+      <section id="projects" class="page">
+        <div class="section-container">
+          <h2 class="section-title">Featured Projects</h2>
+          <div class="project-grid">
+            <a href="https://github.com/parth-koli67/terraform-gcp-shared-vpc-scaffold" target="_blank" class="project-card large-card">
+              <img src="https://placehold.co/800x400/1a1e24/58a6ff?text=GCP+Landing+Zone" alt="GCP Shared VPC Scaffold Project Image" class="project-image">
+              <div class="card-content">
+                <h3>Terraform GCP Shared VPC Scaffold</h3>
+                <p>A production-ready scaffold for deploying a secure GCP Landing Zone with a Shared VPC architecture.</p>
+              </div>
+            </a>
+            <a href="https://github.com/parth-koli67/cloud-native-gcp-deployment" target="_blank" class="project-card small-card">
+              <img src="https://placehold.co/600x400/1a1e24/c9d1d9?text=Cloud-Native+CI/CD" alt="Cloud-Native GCP Deployment Project Image" class="project-image">
+              <div class="card-content">
+                <h3>Cloud-Native GCP Deployment</h3>
+                <p>A modular setup for deploying containerized apps on GKE.</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="page">
+        <div class="section-container">
+          <h2 class="section-title">Let's Connect</h2>
+          <p class="section-intro">I'm always open to discussing new projects and opportunities. Feel free to reach out.</p>
+          <a href="mailto:parth.koli.0607@gmail.com" class="contact-button">parth.koli.0607@gmail.com</a>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer id="footer">
