@@ -1,44 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Smooth scrolling for navigation links
-  const navLinks = document.querySelectorAll('.nav-menu a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', function(e) {
+  // --- Dynamic Background Glow on Mouse Move ---
+  const glow = document.querySelector('.background-glow');
+  document.addEventListener('mousemove', (e) => {
+    // Using requestAnimationFrame for performance
+    window.requestAnimationFrame(() => {
+      glow.style.transform = `translate(${e.clientX - 500}px, ${e.clientY - 500}px)`;
+    });
+  });
+
+  // --- Smooth Scrolling for Navigation ---
+  document.querySelectorAll('.nav-menu a').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const targetId = this.getAttribute('href');
-      const targetSection = document.querySelector(targetId);
-      if (targetSection) {
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const headerOffset = document.getElementById('header').offsetHeight;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
         window.scrollTo({
-          top: targetSection.offsetTop - 70, // Adjust for fixed header height
+          top: offsetPosition,
           behavior: 'smooth'
         });
       }
     });
   });
 
-  // Intersection Observer for fade-in animations on scroll
-  const fadeElements = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
+  // --- Scroll-triggered Animations ---
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // Stop observing after it's visible
+        // Optional: unobserve after revealing to save resources
+        // revealObserver.unobserve(entry.target);
       }
     });
   }, {
     threshold: 0.1
   });
 
-  fadeElements.forEach(element => {
-    observer.observe(element);
+  revealElements.forEach(element => {
+    revealObserver.observe(element);
   });
 
-  // Intersection Observer for active navigation link highlighting
+  // --- Active Navigation Link Highlighting on Scroll ---
   const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-menu a');
+
   const sectionObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        const activeId = entry.target.id;
+        const activeId = entry.target.getAttribute('id');
         navLinks.forEach(link => {
           link.classList.remove('active');
           if (link.getAttribute('href') === `#${activeId}`) {
@@ -48,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    rootMargin: '-20% 0px -80% 0px' // Trigger when section is in the middle 20% of the viewport
+    rootMargin: '-30% 0px -70% 0px'
   });
 
   sections.forEach(section => {
