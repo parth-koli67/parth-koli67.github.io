@@ -9,6 +9,10 @@
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   margin: 0;
@@ -77,11 +81,28 @@ body {
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s;
+  position: relative;
+  padding-bottom: 5px;
 }
 
 .nav-menu a:hover {
   color: var(--primary-color);
 }
+
+.nav-menu a.active {
+  color: var(--primary-color);
+}
+
+.nav-menu a.active::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+}
+
 
 /* Hero Section */
 .hero-section {
@@ -128,7 +149,7 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 3rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .about-skills h3 {
@@ -146,6 +167,85 @@ body {
   padding: 0.5rem 1rem;
   margin-bottom: 0.5rem;
   border-radius: 5px;
+}
+
+/* Experience Section - Timeline */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background-color: var(--primary-color);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -1.5px;
+}
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item:nth-child(odd) {
+  left: 0;
+}
+
+.timeline-item:nth-child(even) {
+  left: 50%;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  right: -10px;
+  background-color: white;
+  border: 4px solid var(--primary-color);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item:nth-child(even)::after {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+}
+
+.timeline-content h3 {
+    margin-top: 0;
+    color: var(--dark-color);
+}
+
+.timeline-company {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.timeline-date {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.timeline-content ul {
+    padding-left: 20px;
+    margin-top: 1rem;
 }
 
 /* Projects Section */
@@ -214,15 +314,42 @@ body {
   padding: 2rem 0;
 }
 
+/* Animation Styling */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .about-content {
     grid-template-columns: 1fr;
   }
   .nav-menu {
     display: none; /* Simple hiding for mobile, can be replaced with a burger menu */
+  }
+  .timeline::after {
+    left: 15px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 10px;
+  }
+  .timeline-item:nth-child(even) {
+    left: 0%;
+  }
+  .timeline-item::after {
+    left: 5px;
   }
 }
